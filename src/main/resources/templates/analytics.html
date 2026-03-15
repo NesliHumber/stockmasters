@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Analytics</title>
+
+<div th:replace="fragments/base :: assetsHead"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid" style="margin-left:250px;padding:30px;">
+
+<h2 class="mb-4">Inventory Analytics</h2>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>Inventory by Center</h5>
+
+<canvas id="centerChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h5>Products by Category</h5>
+
+<canvas id="categoryChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<div th:replace="fragments/base :: assetsScripts"></div>
+
+<script>
+
+const centerChart = new Chart(
+document.getElementById('centerChart'),
+{
+type: 'bar',
+data: {
+labels: ['Center A','Center B','Center C'],
+datasets: [{
+label: 'Inventory',
+data: [120,90,150],
+backgroundColor: ['#0d6efd','#198754','#ffc107']
+}]
+}
+});
+
+const categoryChart = new Chart(
+document.getElementById('categoryChart'),
+{
+type: 'pie',
+data: {
+labels: ['Electronics','Clothing','Food'],
+datasets: [{
+data: [45,30,25],
+backgroundColor: ['#0d6efd','#198754','#ffc107']
+}]
+}
+});
+
+</script>
+
+</body>
+
+</html>

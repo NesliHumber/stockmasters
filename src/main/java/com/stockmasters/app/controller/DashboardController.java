@@ -1,12 +1,12 @@
 package com.stockmasters.app.controller;
 
-import com.stockmasters.app.repository.ProductRepository;
-import com.stockmasters.app.repository.InventoryRepository;
-import com.stockmasters.app.repository.CenterRepository;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.stockmasters.app.repository.CenterRepository;
+import com.stockmasters.app.repository.InventoryRepository;
+import com.stockmasters.app.repository.ProductRepository;
 
 @Controller
 public class DashboardController {
@@ -18,6 +18,7 @@ public class DashboardController {
     public DashboardController(ProductRepository productRepo,
                                InventoryRepository inventoryRepo,
                                CenterRepository centerRepo) {
+
         this.productRepo = productRepo;
         this.inventoryRepo = inventoryRepo;
         this.centerRepo = centerRepo;
@@ -27,10 +28,10 @@ public class DashboardController {
     public String dashboard(Model model) {
 
         model.addAttribute("totalProducts", productRepo.count());
+        model.addAttribute("totalInventory", inventoryRepo.count());
         model.addAttribute("totalCenters", centerRepo.count());
-        model.addAttribute("lowStock", inventoryRepo.countLowStock());
-        model.addAttribute("stockValue", inventoryRepo.totalStockValue());
 
         return "dashboard";
     }
+
 }

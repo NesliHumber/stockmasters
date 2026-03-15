@@ -1,27 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      th:replace="fragments/base :: body">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<h2>Distribution Centers</h2>
+<head>
 
-<div class="row">
+<title>Centers</title>
 
-<div class="col-md-4"
-     th:each="c : ${centers}">
+<div th:replace="fragments/base :: assetsHead"></div>
 
-<div class="card p-3 mb-3">
+</head>
 
-<h5 th:text="${c.name}"></h5>
+<body>
 
-<p>
-<span th:text="${c.city}"></span>,
-<span th:text="${c.state}"></span>
-</p>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid" style="margin-left:250px;padding:30px;">
+
+<h2 class="mb-4">Distribution Centers</h2>
+
+<table class="table table-striped table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Location</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each="center : ${centers}">
+
+<td th:text="${center.id}"></td>
+<td th:text="${center.name}"></td>
+<td th:text="${center.location}"></td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 </div>
 
-</div>
+<div th:replace="fragments/footer :: footer"></div>
 
-</div>
+<div th:replace="fragments/base :: assetsScripts"></div>
+
+</body>
 
 </html>

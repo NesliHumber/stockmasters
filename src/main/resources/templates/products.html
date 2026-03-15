@@ -1,60 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <div th:insert="~{fragments/base :: assetsHead}"></div>
-    <title>Product Catalog - StockMasters</title>
+
+<title>Products</title>
+
+<div th:replace="fragments/base :: assetsHead"></div>
+
 </head>
 
 <body>
 
-<h1>Product Catalog</h1>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="d-flex justify-content-between mb-4">
+<div class="container-fluid" style="margin-left:250px;padding:30px;">
 
-<form method="get">
+<h2 class="mb-4">Products</h2>
 
-<input type="text"
-       name="search"
-       placeholder="Search products"
-       class="form-control">
+<!-- ADD PRODUCT BUTTON -->
 
-</form>
-
-<a class="btn btn-dark"
-   th:href="@{/products/create}">
-+ Add Product
+<a th:href="@{/products/new}" class="btn btn-primary mb-3">
+Add Product
 </a>
 
+<table class="table table-striped table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each="product : ${products}">
+
+<td th:text="${product.id}"></td>
+
+<td th:text="${product.name}"></td>
+
+<td>
+
+<!-- EDIT BUTTON -->
+
+<a th:href="@{/products/edit/{id}(id=${product.id})}"
+class="btn btn-warning btn-sm">
+
+Edit
+
+</a>
+
+<!-- DELETE BUTTON -->
+
+<a th:href="@{/products/delete/{id}(id=${product.id})}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
 </div>
 
-<div class="row">
+<div th:replace="fragments/footer :: footer"></div>
 
-<div class="col-md-3 mb-3"
-     th:each="p : ${products}">
-
-<div class="card">
-
-<div class="card-body">
-
-<h6 th:text="${p.sku}"></h6>
-
-<h5 th:text="${p.name}"></h5>
-
-<p>
-<span th:text="${p.brand.name}"></span>
-•
-<span th:text="${p.category.name}"></span>
-</p>
-
-<h4>$<span th:text="${p.price}"></span></h4>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+<div th:replace="fragments/base :: assetsScripts"></div>
 
 </body>
 
