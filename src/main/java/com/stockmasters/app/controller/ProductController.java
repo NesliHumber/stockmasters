@@ -49,9 +49,12 @@ public class ProductController {
             @RequestParam(required=false) Long category,
             @RequestParam(defaultValue="0") int page,
             @RequestParam(defaultValue="name") String sort,
+            @RequestParam(defaultValue = "asc") String direction,
             Model model){
 
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sort));
+
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;        
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.fromString(direction), sort));
 
         Brand selectedBrand = null;
         Category selectedCategory = null;
@@ -71,6 +74,10 @@ public class ProductController {
         model.addAttribute("brands", brandRepo.findAll());
         model.addAttribute("categories", categoryRepo.findAll());
         model.addAttribute("search", search);
+        model.addAttribute("selectedBrand", selectedBrand);
+        model.addAttribute("selectedCategory", selectedCategory);
+        model.addAttribute("sort", sort);
+        model.addAttribute("direction", direction);
 
         return "products";
     }
