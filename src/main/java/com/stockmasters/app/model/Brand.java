@@ -15,4 +15,24 @@ public class Brand {
 
     @Column(unique = true)
     private String name;
+
+    public Brand() {}
+
+    // getters & setters
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

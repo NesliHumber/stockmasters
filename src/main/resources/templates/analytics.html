@@ -2,12 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
 <title>Analytics</title>
-
 <div th:replace="fragments/base :: assetsHead"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+html, body { height:100%; }
+body { display:flex; flex-direction:column; }
+.main-content { flex:1; }
+</style>
 
 </head>
 
@@ -15,40 +19,30 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container-fluid" style="margin-left:250px;padding:30px;">
+<div class="main-content">
 
-<h2 class="mb-4">Inventory Analytics</h2>
+<div class="container mt-5">
 
-<div class="row">
+<h1 class="text-center mb-4">Inventory Analytics</h1>
+
+<div class="row justify-content-center">
 
 <div class="col-md-6">
-
 <div class="card shadow">
-
 <div class="card-body">
-
-<h5>Inventory by Center</h5>
-
+<h5 class="text-center">Inventory by Center</h5>
 <canvas id="centerChart"></canvas>
-
 </div>
-
 </div>
-
 </div>
 
 <div class="col-md-6">
-
 <div class="card shadow">
-
 <div class="card-body">
-
-<h5>Products by Category</h5>
-
+<h5 class="text-center">Products by Category</h5>
 <canvas id="categoryChart"></canvas>
-
 </div>
-
+</div>
 </div>
 
 </div>
@@ -93,5 +87,4 @@ backgroundColor: ['#0d6efd','#198754','#ffc107']
 </script>
 
 </body>
-
 </html>

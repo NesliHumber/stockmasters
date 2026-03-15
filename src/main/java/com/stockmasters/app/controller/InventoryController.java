@@ -20,6 +20,14 @@ public class InventoryController {
 
         model.addAttribute("inventory", repo.findAll());
 
+        Double total = repo.totalStockValue();
+
+        if(total == null){
+            total = 0.0;
+        }
+
+        model.addAttribute("totalValue", total);
+
         return "inventory";
     }
 }

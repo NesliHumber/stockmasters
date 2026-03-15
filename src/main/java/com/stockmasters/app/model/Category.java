@@ -15,4 +15,24 @@ public class Category {
 
     @Column(unique = true)
     private String name;
+
+    public Category() {}
+
+    // getters & setters
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

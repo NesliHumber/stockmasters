@@ -1,65 +1,43 @@
-<nav th:fragment="navbar"
-style="width:250px;
-min-height:100vh;
-background:#212529;
-color:white;
-position:fixed;
-left:0;
-top:0;
-display:flex;
-flex-direction:column;">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
 
-<div style="padding:20px;border-bottom:1px solid #444;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     th:fragment="navbar">
 
-<a th:href="@{/dashboard}"
-style="font-size:1.4rem;
-font-weight:bold;
-color:white;
-text-decoration:none;">
+<div class="container-fluid">
 
+<a class="navbar-brand" th:href="@{/}">
 StockMasters
-
 </a>
 
-</div>
+<ul class="navbar-nav">
 
-<ul style="list-style:none;padding:0;margin:0;flex-grow:1;">
-
-<li>
-<a th:href="@{/dashboard}"
-style="display:block;padding:15px;color:#adb5bd;text-decoration:none;">
-Dashboard
-</a>
+<li class="nav-item">
+<a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
 </li>
 
-<li>
-<a th:href="@{/products}"
-style="display:block;padding:15px;color:#adb5bd;text-decoration:none;">
-Products
-</a>
+<li class="nav-item">
+<a class="nav-link" th:href="@{/products}">Products</a>
 </li>
 
-<li>
-<a th:href="@{/inventory}"
-style="display:block;padding:15px;color:#adb5bd;text-decoration:none;">
-Inventory
-</a>
+<li class="nav-item">
+<a class="nav-link" th:href="@{/inventory}">Inventory</a>
 </li>
 
-<li>
-<a th:href="@{/centers}"
-style="display:block;padding:15px;color:#adb5bd;text-decoration:none;">
-Centers
-</a>
+<li class="nav-item">
+<a class="nav-link" th:href="@{/centers}">Centers</a>
 </li>
 
-<li>
-<a th:href="@{/analytics}"
-style="display:block;padding:15px;color:#adb5bd;text-decoration:none;">
-Analytics
-</a>
+<li class="nav-item">
+<a class="nav-link" th:href="@{/analytics}">Analytics</a>
 </li>
 
 </ul>
 
+</div>
+
 </nav>
+
+</body>
+</html>

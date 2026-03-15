@@ -1,102 +1,114 @@
 package com.stockmasters.app.controller;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.stockmasters.app.model.Brand;
+import com.stockmasters.app.model.Category;
 import com.stockmasters.app.model.Product;
+import com.stockmasters.app.repository.BrandRepository;
+import com.stockmasters.app.repository.CategoryRepository;
 import com.stockmasters.app.service.ProductService;
 
+import jakarta.validation.Valid;
+
 @Controller
+@RequestMapping("/products")
 public class ProductController {
 
-    private final ProductService service;
+    private final ProductService productService;
+    private final BrandRepository brandRepo;
+    private final CategoryRepository categoryRepo;
 
-    public ProductController(ProductService service) {
-        this.service = service;
+    public ProductController(ProductService productService,
+                             BrandRepository brandRepo,
+                             CategoryRepository categoryRepo){
+        this.productService = productService;
+        this.brandRepo = brandRepo;
+        this.categoryRepo = categoryRepo;
     }
 
     // ===============================
-    // SHOW PRODUCT LIST
+    // LIST PRODUCTS
     // ===============================
 
-    @GetMapping("/products")
-    public String products(Model model,
-                           @RequestParam(required = false) String search) {
+    @GetMapping
+    public String listProducts(
+            @RequestParam(required=false) String search,
+            @RequestParam(required=false) Long brand,
+            @RequestParam(required=false) Long category,
+            @RequestParam(defaultValue="0") int page,
+            @RequestParam(defaultValue="name") String sort,
+            Model model){
 
-        List<Product> products = service.search(search);
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sort));
+
+        Brand selectedBrand = null;
+        Category selectedCategory = null;
+
+        if(brand != null){
+            selectedBrand = brandRepo.findById(brand).orElse(null);
+        }
+
+        if(category != null){
+            selectedCategory = categoryRepo.findById(category).orElse(null);
+        }
+
+        Page<Product> products =
+                productService.search(search, selectedBrand, selectedCategory, pageable);
 
         model.addAttribute("products", products);
+        model.addAttribute("brands", brandRepo.findAll());
+        model.addAttribute("categories", categoryRepo.findAll());
+        model.addAttribute("search", search);
 
         return "products";
     }
 
     // ===============================
-    // CREATE PRODUCT PAGE
+    // NEW PRODUCT FORM
     // ===============================
 
-    @GetMapping("/products/new")
+    @GetMapping("/new")
     public String newProduct(Model model){
 
         model.addAttribute("product", new Product());
+        model.addAttribute("brands", brandRepo.findAll());
+        model.addAttribute("categories", categoryRepo.findAll());
 
         return "product-form";
     }
 
     // ===============================
-    // SAVE NEW PRODUCT
+    // SAVE PRODUCT
     // ===============================
 
-    @PostMapping("/products/save")
-    public String saveProduct(@ModelAttribute Product product){
+    @PostMapping("/save")
+    public String saveProduct(
+            @Valid @ModelAttribute Product product,
+            BindingResult result,
+            Model model){
 
-        service.save(product);
+        if(result.hasErrors()){
+
+            model.addAttribute("brands", brandRepo.findAll());
+            model.addAttribute("categories", categoryRepo.findAll());
+
+            return "product-form";
+        }
+
+        productService.save(product);
 
         return "redirect:/products";
     }
-
-    // ===============================
-    // EDIT PRODUCT PAGE
-    // ===============================
-
-    @GetMapping("/products/edit/{id}")
-    public String editProduct(@PathVariable Long id, Model model){
-
-        Product product = service.findById(id);
-
-        model.addAttribute("product", product);
-
-        return "product-edit";
-    }
-
-    // ===============================
-    // UPDATE PRODUCT
-    // ===============================
-
-    @PostMapping("/products/update")
-    public String updateProduct(@ModelAttribute Product product){
-
-        service.save(product);
-
-        return "redirect:/products";
-    }
-
-    // ===============================
-    // DELETE PRODUCT
-    // ===============================
-
-    @GetMapping("/products/delete/{id}")
-    public String deleteProduct(@PathVariable Long id){
-
-        service.delete(id);
-
-        return "redirect:/products";
-    }
-
 }

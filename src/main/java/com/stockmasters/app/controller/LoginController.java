@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(){
         return "login";
     }
 
     @PostMapping("/login")
-    public String loginUser() {
-
+    public String login(){
         // accept any username/password
         return "redirect:/dashboard";
     }
+
 }
