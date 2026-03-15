@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/base :: layout(~{::section})">
+
+<section>
+
+<h1>Dashboard</h1>
+
+<div class="row mt-4">
+
+<div class="col-md-3">
+<div class="card bg-primary text-white p-3">
+<h5>Total Products</h5>
+<h2 th:text="${totalProducts}"></h2>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card bg-success text-white p-3">
+<h5>Total Warehouses</h5>
+<h2 th:text="${totalCenters}"></h2>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card bg-danger text-white p-3">
+<h5>Low Stock Items</h5>
+<h2 th:text="${lowStock}"></h2>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card bg-dark text-white p-3">
+<h5>Stock Value</h5>
+<h2>$<span th:text="${stockValue}"></span></h2>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</html>

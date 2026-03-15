@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/base :: body">
+
+<h2>Distribution Centers</h2>
+
+<div class="row">
+
+<div class="col-md-4"
+     th:each="c : ${centers}">
+
+<div class="card p-3 mb-3">
+
+<h5 th:text="${c.name}"></h5>
+
+<p>
+<span th:text="${c.city}"></span>,
+<span th:text="${c.state}"></span>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</html>

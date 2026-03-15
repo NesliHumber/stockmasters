@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/base :: body">
+
+<h2>Inventory Management</h2>
+
+<table class="table">
+
+<thead>
+<tr>
+<th>SKU</th>
+<th>Product</th>
+<th>Location</th>
+<th>Stock</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:each="i : ${inventory}">
+
+<td th:text="${i.product.sku}"></td>
+<td th:text="${i.product.name}"></td>
+<td th:text="${i.center.name}"></td>
+<td th:text="${i.quantity}"></td>
+
+<td>
+
+<span class="badge bg-success"
+      th:if="${i.quantity > 10}">
+Healthy
+</span>
+
+<span class="badge bg-danger"
+      th:if="${i.quantity <= 10}">
+Low
+</span>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</html>

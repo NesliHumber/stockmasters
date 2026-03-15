@@ -1,0 +1,17 @@
+<nav th:fragment="navbar" style="width: 250px; min-height: 100vh; background-color: #212529; color: white; position: fixed; left: 0; top: 0; display: flex; flex-direction: column; z-index: 1000;">
+    <div style="padding: 20px; border-bottom: 1px solid #444;">
+        <a style="font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none;" th:href="@{/dashboard}">StockMasters</a>
+    </div>
+    <ul style="list-style: none; padding: 0; margin: 0; flex-grow: 1;">
+        <li><a th:href="@{/dashboard}" style="display: block; padding: 15px 20px; color: #adb5bd; text-decoration: none; border-bottom: 1px solid #333;">Dashboard</a></li>
+        <li><a th:href="@{/products}" style="display: block; padding: 15px 20px; color: #adb5bd; text-decoration: none; border-bottom: 1px solid #333;">Products</a></li>
+        <li><a th:href="@{/inventory}" style="display: block; padding: 15px 20px; color: #adb5bd; text-decoration: none; border-bottom: 1px solid #333;">Inventory</a></li>
+        <li><a th:href="@{/centers}" style="display: block; padding: 15px 20px; color: #adb5bd; text-decoration: none; border-bottom: 1px solid #333;">Centers</a></li>
+        <li><a th:href="@{/analytics}" style="display: block; padding: 15px 20px; color: #adb5bd; text-decoration: none; border-bottom: 1px solid #333;">Analytics</a></li>
+    </ul>
+    <div style="padding: 20px; border-top: 1px solid #444;">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-outline-light w-100">Logout</button>
+        </form>
+    </div>
+</nav>

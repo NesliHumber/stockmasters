@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="~{fragments/base :: assetsHead}"></div>
+    <title>Product Catalog - StockMasters</title>
+</head>
+
+<body>
+
+<h1>Product Catalog</h1>
+
+<div class="d-flex justify-content-between mb-4">
+
+<form method="get">
+
+<input type="text"
+       name="search"
+       placeholder="Search products"
+       class="form-control">
+
+</form>
+
+<a class="btn btn-dark"
+   th:href="@{/products/create}">
++ Add Product
+</a>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-3 mb-3"
+     th:each="p : ${products}">
+
+<div class="card">
+
+<div class="card-body">
+
+<h6 th:text="${p.sku}"></h6>
+
+<h5 th:text="${p.name}"></h5>
+
+<p>
+<span th:text="${p.brand.name}"></span>
+•
+<span th:text="${p.category.name}"></span>
+</p>
+
+<h4>$<span th:text="${p.price}"></span></h4>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
