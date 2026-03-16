@@ -24,33 +24,41 @@ Add Product
 
 <form method="get" class="row g-2 mb-4">
 
-<div class="col-md-4">
-<select name="brand" class="form-select">
-<option value="">All Brands</option>
-<option th:each="b : ${brands}"
-        th:value="${b.brandId}"
-        th:text="${b.name}"
-        th:selected="${selectedBrand != null and selectedBrand == b.brandId}">
-</option>
-</select>
-</div>
+    <div class="col-md-3">
+        <select name="brand" class="form-select">
+            <option value="">All Brands</option>
+            <option th:each="b : ${brands}"
+                    th:value="${b.brandId}"
+                    th:text="${b.name}"
+                    th:selected="${selectedBrand != null and selectedBrand == b.brandId}">
+            </option>
+        </select>
+    </div>
 
-<div class="col-md-4">
-<select name="category" class="form-select">
-<option value="">All Categories</option>
-<option th:each="c : ${categories}"
-        th:value="${c.categoryId}"
-        th:text="${c.name}"
-        th:selected="${selectedCategory != null and selectedCategory == c.categoryId}">
-</option>
-</select>
-</div>
+    <div class="col-md-3">
+        <select name="category" class="form-select">
+            <option value="">All Categories</option>
+            <option th:each="c : ${categories}"
+                    th:value="${c.categoryId}"
+                    th:text="${c.name}"
+                    th:selected="${selectedCategory != null and selectedCategory == c.categoryId}">
+            </option>
+        </select>
+    </div>
 
-<div class="col-md-2">
-<button class="btn btn-primary w-100">
-Filter
-</button>
-</div>
+    <div class="col-md-3">
+        <select name="sort" class="form-select">
+            <option value="name" th:selected="${selectedSort == 'name'}">Sort by Name</option>
+            <option value="price" th:selected="${selectedSort == 'price'}">Sort by Price</option>
+            <option value="quantity" th:selected="${selectedSort == 'quantity'}">Sort by Quantity</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <button class="btn btn-primary w-100">
+            Filter
+        </button>
+    </div>
 
 </form>
 
@@ -89,17 +97,17 @@ No products found
 <ul class="pagination">
 
 <li class="page-item" th:classappend="${products.first}? 'disabled'">
-<a class="page-link"
-th:href="@{/products(page=${products.number - 1})}">
-Previous
-</a>
+    <a class="page-link"
+       th:href="@{/products(page=${products.number - 1}, brand=${selectedBrand}, category=${selectedCategory}, sort=${selectedSort})}">
+        Previous
+    </a>
 </li>
 
 <li class="page-item" th:classappend="${products.last}? 'disabled'">
-<a class="page-link"
-th:href="@{/products(page=${products.number + 1})}">
-Next
-</a>
+    <a class="page-link"
+       th:href="@{/products(page=${products.number + 1}, brand=${selectedBrand}, category=${selectedCategory}, sort=${selectedSort})}">
+        Next
+    </a>
 </li>
 
 </ul>
