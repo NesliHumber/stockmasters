@@ -58,14 +58,54 @@ Filter
 
 <thead class="table-dark">
 <tr>
-<th>Name</th>
-<th>Price</th>
-<th>Quantity</th>
-<th>Brand</th>
-<th>Category</th>
+
+<th>
+<a th:href="@{/products(sort='name',
+direction=${sort=='name' and direction=='asc'?'desc':'asc'},
+page=${products.number}, brand=${selectedBrand?.brandId}, category=${selectedCategory?.categoryId})}"
+class="text-white text-decoration-none">
+Name
+</a>
+</th>
+
+<th>
+<a th:href="@{/products(sort='price',
+direction=${sort=='price' and direction=='asc'?'desc':'asc'},
+page=${products.number},brand=${selectedBrand?.brandId},category=${selectedCategory?.categoryId})}"
+class="text-white text-decoration-none">
+Price
+</a>
+</th>
+
+<th>
+<a th:href="@{/products(sort='quantity',
+direction=${sort=='quantity' and direction=='asc'?'desc':'asc'},
+page=${products.number},brand=${selectedBrand?.brandId},category=${selectedCategory?.categoryId})}"
+class="text-white text-decoration-none">
+Quantity
+</a>
+</th>
+
+<th>
+<a th:href="@{/products(sort='brand.name',
+direction=${sort=='brand.name' and direction=='asc'?'desc':'asc'},
+page=${products.number},brand=${selectedBrand?.brandId}, category=${selectedCategory?.categoryId})}"
+class="text-white text-decoration-none">
+Brand
+</a>
+</th>
+
+<th>
+<a th:href="@{/products(sort='category.name',
+direction=${sort=='category.name' and direction=='asc'?'desc':'asc'},
+page=${products.number},brand=${selectedBrand?.brandId},category=${selectedCategory?.categoryId})}"
+class="text-white text-decoration-none">
+Category
+</a>
+</th>
+
 </tr>
 </thead>
-
 <tbody>
 
 <tr th:each="p : ${products.content}">
