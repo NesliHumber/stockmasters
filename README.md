@@ -1,42 +1,175 @@
+# StockMasters
+Inventory Management Platform for Multi-Location Warehouses
 
-# Maven wrapper
+## Overview
 
-./mvnw
+StockMasters is a web-based inventory management application designed for businesses that operate multiple warehouse locations. The system allows staff to manage products, track inventory across distribution centers, and monitor stock levels through a centralized interface.
 
--> means "run Maven using the project's wrapper"
+The application is built using:
 
--> It allows the project to run Maven even if Maven is not installed on the computer.
+- Spring Boot
+- Spring Data JPA
+- Thymeleaf
+- Bootstrap
+- H2 Database
 
-# to compile & run the code
+The goal of the project is to demonstrate a full-stack web application where users can interact with a database through a browser interface. The system supports product management, filtering, sorting, and inventory tracking.
+
+---
+
+## Features
+
+### Product Management
+
+Users can create and manage products in the system.
+
+Each product includes:
+- Product name
+- Price
+- Quantity
+- Brand
+- Category
+
+The system validates input data to ensure required fields are provided and values are within valid ranges.
+
+---
+
+### Inventory Browsing
+
+The products page displays a list of products stored in the database.
+
+Users can:
+
+- View product information
+- Filter products by brand
+- Filter products by category
+- Sort products by name, price, or quantity
+- Navigate results using server-side pagination
+
+---
+
+### Data Persistence
+
+Product data is stored in a relational database using Spring Data JPA.
+
+The database is automatically seeded with sample data at application startup using a `data.sql` file. This allows users to run the application and immediately see example products without needing to add data manually.
+
+---
+
+## Warehouse Context
+
+The application models a real-world inventory system that includes:
+
+- Products
+- Brands
+- Categories
+- Distribution Centers
+- Inventory quantities
+
+This structure reflects how companies manage inventory across multiple locations.
+
+---
+
+## Technology Stack
+
+Backend: Spring Boot  
+ORM: Spring Data JPA  
+Frontend: Thymeleaf  
+UI Styling: Bootstrap  
+Database: H2  
+Build Tool: Maven  
+
+---
+
+## Application Architecture
+
+The project follows a standard Spring Boot MVC structure.
+
+Controller → Service → Repository → Database
+
+Controllers handle HTTP requests and return Thymeleaf views.
+
+Services contain application logic such as searching and filtering products.
+
+Repositories use Spring Data JPA to interact with the database.
+
+Templates render dynamic HTML pages using Thymeleaf.
+
+---
+
+## How to Run the Application
+
+### 1. Clone the Repository
+
+git clone https://github.com/NesliHumber/stockmasters.git  
+cd stockmasters
+
+### 2. Run the Application
+
+Using the Maven wrapper included in the repository.
+
+Mac / Linux:
 
 ./mvnw spring-boot:run
 
-            When we run Maven command: ./mvnw spring-boot:run
+Windows:
 
-            Maven:
+mvnw.cmd spring-boot:run
 
-                    1️⃣ Compiles Java code src/main/java/*.java into target/classes/*.class
+### 3. Open the Application
 
-                    2️⃣ Copies resources src/main/resources into target/classes
+Once the application starts, open a browser and go to:
 
-                    3️⃣ Runs the application from target/classes
+http://localhost:8080
 
-# to clean "target" folder
+### 4. Sample Data
 
-./mvnw clean 
+When the application starts, the database is automatically populated with sample data using `data.sql`.
 
--> forces Maven to start from scratch
+This allows users to immediately view products and test filtering and sorting features.
 
-# to compile the code
+---
 
-./mvnw compile
+## Project Pages
 
-# to start a clean build 
+### Home
+The entry page describing the purpose of the application.
 
-./mvnw clean install
+### Products
+Displays a list of products with filtering, sorting, and pagination.
 
-or
+### Inventory
+Shows product inventory across distribution centers.
 
-./mvnw clean spring-boot:run
+### Distribution Centers
+Displays warehouse locations and related inventory data.
 
--> cleans old build, compile again, run the application
+### Analytics
+Provides visual summaries of inventory trends and metrics.
+
+---
+
+## Team Members and Contributions
+
+### Veevek Auckloo
+- Implemented core Java application logic
+- Contributed to service layer and feature planning
+- Assisted with backend functionality
+
+### Aakarshan Sharma
+- Implemented user interface design
+- Developed CRUD pages
+- Assisted with frontend integration
+
+### Neslihan Ustaoglu
+- Supported UI development
+- Assisted backend integration
+- Conducted quality assurance and testing
+
+### Xia Wang
+- Designed database structure
+- Implemented entity relationships
+- Managed database configuration and integration
+- Contributed improvements to product filtering and sorting functionality
+
+
