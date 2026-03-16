@@ -74,6 +74,7 @@ public class ProductController {
         model.addAttribute("brands", brandRepo.findAll());
         model.addAttribute("categories", categoryRepo.findAll());
         model.addAttribute("search", search);
+        
         model.addAttribute("selectedBrand", selectedBrand);
         model.addAttribute("selectedCategory", selectedCategory);
         model.addAttribute("sort", sort);

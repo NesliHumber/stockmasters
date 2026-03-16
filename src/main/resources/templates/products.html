@@ -29,7 +29,8 @@ Add Product
 <option value="">All Brands</option>
 <option th:each="b : ${brands}"
         th:value="${b.brandId}"
-        th:text="${b.name}">
+        th:text="${b.name}"
+        th:selected="${selectedBrand != null and selectedBrand == b.brandId}">
 </option>
 </select>
 </div>
@@ -39,7 +40,8 @@ Add Product
 <option value="">All Categories</option>
 <option th:each="c : ${categories}"
         th:value="${c.categoryId}"
-        th:text="${c.name}">
+        th:text="${c.name}"
+        th:selected="${selectedCategory != null and selectedCategory == c.categoryId}">
 </option>
 </select>
 </div>

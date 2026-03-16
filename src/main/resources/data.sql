@@ -69,3 +69,12 @@ VALUES (5, 1, 20);
 
 INSERT INTO inventory (product_id, center_id, quantity)
 VALUES (6, 3, 15);
+
+-- -----------------------------
+-- SUPPLIERS
+-- -----------------------------
+
+INSERT INTO supplier (supplier_id, name, company, email, phone) VALUES
+(1, 'John Humber', 'Apple Supply', 'john@applesupply.com', '416-555-1111'),
+(2, 'Sarah Lawrence', 'Samsung Parts', 'sarah@samsungparts.com', '647-555-2222'),
+(3, 'Mike Tyson', 'Nike Wholesale', 'mike@nikewholesale.com', '905-555-3333');

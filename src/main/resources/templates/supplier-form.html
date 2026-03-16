@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Supplier Form</title>
+    <div th:replace="fragments/base :: assetsHead"></div>
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="main-content">
+    <div class="container mt-5">
+
+        <h2 class="mb-4" th:text="${supplier.supplierId == null ? 'Add Supplier' : 'Edit Supplier'}"></h2>
+
+        <form th:action="@{/suppliers/save}" th:object="${supplier}" method="post">
+            <input type="hidden" th:field="*{supplierId}">
+
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" th:field="*{name}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Company</label>
+                <input type="text" th:field="*{company}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" th:field="*{email}" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" th:field="*{phone}" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" th:href="@{/suppliers}">Cancel</a>
+        </form>
+
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/base :: assetsScripts"></div>
+
+</body>
+</html>
