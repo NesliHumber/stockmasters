@@ -73,7 +73,8 @@ public class ProductController {
         model.addAttribute("search", search);
         model.addAttribute("selectedBrand", brand);
         model.addAttribute("selectedCategory", category);
-
+        model.addAttribute("selectedSort", sort);
+        
         return "products";
     }
 
