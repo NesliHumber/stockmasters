@@ -3,7 +3,7 @@
 
 <head>
 <title>Analytics</title>
-<div th:replace="fragments/base :: assetsHead"></div>
+<div th:replace="~{fragments/base :: assetsHead}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -51,9 +51,9 @@ body { display:flex; flex-direction:column; }
 
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
-<div th:replace="fragments/base :: assetsScripts"></div>
+<div th:replace="~{fragments/base :: assetsScripts}"></div>
 
 <script>
 

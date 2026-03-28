@@ -3,12 +3,12 @@
 
 <head>
     <title>Suppliers</title>
-    <div th:replace="fragments/base :: assetsHead"></div>
+    <div th:replace="~{fragments/base :: assetsHead}"></div>
 </head>
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="main-content">
     <div class="container mt-5">
@@ -52,8 +52,8 @@
     </div>
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
-<div th:replace="fragments/base :: assetsScripts"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/base :: assetsScripts}"></div>
 
 </body>
 </html>
