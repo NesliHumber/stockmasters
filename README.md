@@ -162,8 +162,10 @@ Provides visual summaries of inventory trends and metrics.
 - Assisted with frontend integration
 
 ### Neslihan Ustaoglu
+- Implemented core Spring Framework logic
 - Supported UI development
 - Assisted backend integration
+- Implemented Spring Security: authentication, password encoding, role-based access control, admin pages
 - Conducted quality assurance and testing
 
 ### Xia Wang
