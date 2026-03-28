@@ -3,12 +3,12 @@
 
 <head>
 <title>Products</title>
-<div th:replace="fragments/base :: assetsHead"></div>
+<div th:replace="~{fragments/base :: assetsHead}"></div>
 </head>
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="main-content">
 
@@ -117,8 +117,8 @@ No products found
 
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
-<div th:replace="fragments/base :: assetsScripts"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/base :: assetsScripts}"></div>
 
 </body>
 </html>

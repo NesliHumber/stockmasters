@@ -4,7 +4,7 @@
 <head>
 <title>Centers</title>
 
-<div th:replace="fragments/base :: assetsHead"></div>
+<div th:replace="~{fragments/base :: assetsHead}"></div>
 
 <style>
 html, body { height:100%; }
@@ -16,7 +16,7 @@ body { display:flex; flex-direction:column; }
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="main-content">
 
@@ -62,9 +62,9 @@ body { display:flex; flex-direction:column; }
 
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
-<div th:replace="fragments/base :: assetsScripts"></div>
+<div th:replace="~{fragments/base :: assetsScripts}"></div>
 
 </body>
 </html>

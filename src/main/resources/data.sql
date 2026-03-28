@@ -78,3 +78,25 @@ INSERT INTO supplier (supplier_id, name, company, email, phone) VALUES
 (1, 'John Humber', 'Apple Supply', 'john@applesupply.com', '416-555-1111'),
 (2, 'Sarah Lawrence', 'Samsung Parts', 'sarah@samsungparts.com', '647-555-2222'),
 (3, 'Mike Tyson', 'Nike Wholesale', 'mike@nikewholesale.com', '905-555-3333');
+
+-- -----------------------------
+-- USERS
+-- -----------------------------
+
+INSERT INTO users (username, password, role) VALUES
+-- ADMIN
+('admin', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_ADMIN'),
+
+-- STAFF USERS
+('staff1', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_STAFF'),
+('staff2', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_STAFF'),
+('staff3', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_STAFF'),
+('staff4', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_STAFF'),
+('staff5', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_STAFF'),
+
+-- VIEWER USERS
+('viewer1', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_VIEWER'),
+('viewer2', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_VIEWER'),
+('viewer3', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_VIEWER'),
+('viewer4', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_VIEWER'),
+('viewer5', '$2a$10$FtFG2bYNlZ/qLBgz9SLR1e2gradMf0lbOd7yd2xATWiLK60nyH8ye', 'ROLE_VIEWER');
