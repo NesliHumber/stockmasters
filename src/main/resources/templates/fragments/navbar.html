@@ -48,7 +48,7 @@ StockMasters
 <div class="d-flex align-items-center ms-auto">
 
 <span class="text-light me-3" sec:authorize="isAuthenticated()">
-     Logged in as: <span sec:authentication="name"></span>
+     Welcome, <span sec:authentication="name"></span>
      </span>
 
 <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
