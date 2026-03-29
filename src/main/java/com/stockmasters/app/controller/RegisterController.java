@@ -22,10 +22,13 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") UserRegistrationDto dto) {
-
-        service.registerUser(dto.getUsername(), dto.getPassword());
-
-        return "redirect:/login";
+    public String registerUser(@ModelAttribute("user") UserRegistrationDto dto, Model model) {
+        try {
+            service.registerUser(dto.getUsername(), dto.getPassword());
+            return "redirect:/login";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            return "register";
+        }
     }
 }

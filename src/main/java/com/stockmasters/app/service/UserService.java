@@ -19,11 +19,13 @@ public class UserService {
 
     public void registerUser(String username, String password) {
 
+        if (repo.findByUsername(username).isPresent()) {
+            throw new RuntimeException("Username already exists");
+        }
+
         User user = new User();
         user.setUsername(username);
         user.setPassword(encoder.encode(password));
-
-        // default role
         user.setRole("ROLE_VIEWER");
 
         repo.save(user);
