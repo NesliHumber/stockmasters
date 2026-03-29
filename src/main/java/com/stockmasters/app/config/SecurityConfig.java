@@ -36,7 +36,7 @@ public class SecurityConfig {
 
                 // VIEWER (READ-ONLY ACCESS)
                 // Accessible by VIEWER, STAFF, and ADMIN
-                .requestMatchers("/dashboard", "/analytics", "/inventory", "/centers")
+                .requestMatchers("/dashboard", "/analytics", "/inventory", "/centers","/products", "/suppliers")
                 .hasAnyRole("VIEWER", "STAFF", "ADMIN")
 
                 // STAFF + ADMIN (CAN CREATE / UPDATE DATA)
