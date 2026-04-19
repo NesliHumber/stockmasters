@@ -11,7 +11,7 @@ The application is built using:
 - Spring Data JPA
 - Thymeleaf
 - Bootstrap
-- H2 Database
+- MySQL (Dockerized)
 
 The goal of the project is to demonstrate a full-stack web application where users can interact with a database through a browser interface. The system supports product management, filtering, sorting, and inventory tracking.
 
@@ -76,7 +76,7 @@ Backend: Spring Boot
 ORM: Spring Data JPA  
 Frontend: Thymeleaf  
 UI Styling: Bootstrap  
-Database: H2  
+Database: MySQL (Docker)  
 Build Tool: Maven  
 
 ---
@@ -87,17 +87,16 @@ The project follows a standard Spring Boot MVC structure.
 
 Controller → Service → Repository → Database
 
-Controllers handle HTTP requests and return Thymeleaf views.
-
-Services contain application logic such as searching and filtering products.
-
-Repositories use Spring Data JPA to interact with the database.
-
-Templates render dynamic HTML pages using Thymeleaf.
+Controllers handle HTTP requests and return Thymeleaf views
+Services contain application logic such as searching and filtering products
+Repositories use Spring Data JPA to interact with the database
+Templates render dynamic HTML pages using Thymeleaf
 
 ---
 
-## How to Run the Application
+## Running the Application with Docker (Recommended)
+
+This project is fully containerized using Docker. The application and MySQL database can be started with a single command.
 
 ### 1. Clone the Repository
 
@@ -106,15 +105,7 @@ cd stockmasters
 
 ### 2. Run the Application
 
-Using the Maven wrapper included in the repository.
-
-Mac / Linux:
-
-./mvnw spring-boot:run
-
-Windows:
-
-mvnw.cmd spring-boot:run
+docker-compose up --build
 
 ### 3. Open the Application
 
@@ -127,6 +118,32 @@ http://localhost:8080
 When the application starts, the database is automatically populated with sample data using `data.sql`.
 
 This allows users to immediately view products and test filtering and sorting features.
+
+#### 5. What Happens Automatically
+
+The Spring Boot application starts inside a Docker container
+A MySQL database container is created
+The application connects to the database
+Tables are created automatically using Hibernate
+Sample data is inserted using data.sql
+
+No manual setup is required.
+
+---
+
+##### 6. Running Without Docker (Optional)
+
+If you prefer to run the application locally without Docker:
+
+Mac / Linux:
+./mvnw spring-boot:run
+
+Windows:
+mvnw.cmd spring-boot:run
+
+Then open:
+
+http://localhost:8080
 
 ---
 
@@ -167,6 +184,7 @@ Provides visual summaries of inventory trends and metrics.
 - Assisted backend integration
 - Implemented Spring Security: authentication, password encoding, role-based access control, admin pages
 - Conducted quality assurance and testing
+- Implemented Docker containerization for the application and MySQL database using Docker Compose
 
 ### Xia Wang
 - Designed database structure
