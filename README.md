@@ -236,5 +236,6 @@ Provides visual summaries of inventory trends and metrics.
 - Contributed improvements to product filtering and sorting functionality
 - Implemented user registration validation to prevent duplicate usernames and ensure data integrity
 - Enhanced role-based access control by enabling VIEWER access to product listings while restricting modification operations to authorized roles
+- Performed end-to-end testing and debugging including database seeding, login issues, and container-based data verification
 
 
