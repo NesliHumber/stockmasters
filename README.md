@@ -163,21 +163,27 @@ To completely remove existing MySQL data (including tables and inserted rows):
 
 docker-compose down -v
 
-#### 2. Run the Application with Docker
+#### 2. Build the Application (Required First Time)
+
+Before running Docker, build the application JAR file:
+
+./mvnw clean package -DskipTests
+
+#### 3. Run the Application with Docker
 
 docker-compose up --build
 
-#### 3. Open the Application
+#### 4. Open the Application
 
 http://localhost:8080
 
-#### 4. What Happens Automatically
+#### 5. What Happens Automatically
 
-The Spring Boot application runs inside a Docker container
-A MySQL database container is created
-The application connects to the database
-Tables are generated using Hibernate
-Sample data is inserted using data.sql
+The Spring Boot application runs inside a Docker container  
+A MySQL database container is created  
+The application connects to the database  
+Tables are generated using Hibernate  
+Sample data is inserted using data.sql  
 
 No manual setup is required.
 
@@ -230,5 +236,6 @@ Provides visual summaries of inventory trends and metrics.
 - Contributed improvements to product filtering and sorting functionality
 - Implemented user registration validation to prevent duplicate usernames and ensure data integrity
 - Enhanced role-based access control by enabling VIEWER access to product listings while restricting modification operations to authorized roles
+- Performed end-to-end testing and debugging including database seeding, login issues, and container-based data verification
 
 
