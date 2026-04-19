@@ -94,56 +94,92 @@ Templates render dynamic HTML pages using Thymeleaf
 
 ---
 
-## Running the Application with Docker (Recommended)
+## Running the Application
 
-This project is fully containerized using Docker. The application and MySQL database can be started with a single command.
+This project supports two environments:
 
-### 1. Clone the Repository
+🟢 Development (H2 – local)
+🟡 QA (MySQL – Docker)
+
+### Clone the Repository
 
 git clone https://github.com/NesliHumber/stockmasters.git  
 cd stockmasters
 
-### 2. Run the Application
+### 🟢 DEV (H2 – Local Development)
 
-docker-compose up --build
+Use this mode for fast local development with an embedded database.
 
-### 3. Open the Application
+#### 1. Reset Local Database (if needed)
 
-Once the application starts, open a browser and go to:
+Delete the H2 database file to avoid duplicate data errors:
+
+rm stockmastersdb.mv.db
+
+#### 2. Run the Application
+
+Mac / Linux:
+
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+
+Windows:
+
+mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=dev
+
+#### 3. Open the Application
 
 http://localhost:8080
 
-### 4. Sample Data
+#### 4. Optional: H2 Database Console
+
+http://localhost:8080/h2-console
+
+#### 5. Sample Data
 
 When the application starts, the database is automatically populated with sample data using `data.sql`.
 
 This allows users to immediately view products and test filtering and sorting features.
 
-#### 5. What Happens Automatically
+#### 6. What Happens Automatically
 
-The Spring Boot application starts inside a Docker container
-A MySQL database container is created
-The application connects to the database
-Tables are created automatically using Hibernate
+The Spring Boot application starts locally on your machine
+An embedded H2 database is created (stored as a local file)
+The application connects to the H2 database automatically
+Tables are generated using Hibernate based on your entities
 Sample data is inserted using data.sql
+The H2 console is enabled for easy database inspection
 
-No manual setup is required.
+No external setup or database installation is required.
 
 ---
 
-##### 6. Running Without Docker (Optional)
+### 🟡 QA (Docker + MySQL)
 
-If you prefer to run the application locally without Docker:
+Use this mode to run the application in a production-like environment using Docker.
 
-Mac / Linux:
-./mvnw spring-boot:run
+#### 1. Reset Database (if needed)
 
-Windows:
-mvnw.cmd spring-boot:run
+To completely remove existing MySQL data (including tables and inserted rows):
 
-Then open:
+docker-compose down -v
+
+#### 2. Run the Application with Docker
+
+docker-compose up --build
+
+#### 3. Open the Application
 
 http://localhost:8080
+
+#### 4. What Happens Automatically
+
+The Spring Boot application runs inside a Docker container
+A MySQL database container is created
+The application connects to the database
+Tables are generated using Hibernate
+Sample data is inserted using data.sql
+
+No manual setup is required.
 
 ---
 
@@ -185,6 +221,7 @@ Provides visual summaries of inventory trends and metrics.
 - Implemented Spring Security: authentication, password encoding, role-based access control, admin pages
 - Conducted quality assurance and testing
 - Implemented Docker containerization for the application and MySQL database using Docker Compose
+- Implemented environment-based configuration (dev: H2, QA: MySQL) using Spring profiles
 
 ### Xia Wang
 - Designed database structure
