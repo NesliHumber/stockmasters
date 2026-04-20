@@ -157,6 +157,25 @@ No external setup or database installation is required.
 
 Use this mode to run the application in a production-like environment using Docker.
 
+### Role-Based Access Control
+The application uses Spring Security to enforce role-based access across different features.
+
+ADMIN: Full system access, Can manage users and access admin dashboard, Can create, update, and delete date
+STAFF: Can create and update products and suppliers, Cannot access admin-level features
+VIEWER: Read-only access, Can view dashboard, products, inventory, and analytics, Cannot modify any data
+
+
+### Access Control Behavior
+
+Unauthorized access attempts redirect users to a custom access denied page
+After login, users are redirected based on their role:
+ADMIN >>> admin/dashboard
+Others >>> dashboard
+This ensures proper separation of permissions and simulates a real-world enterprise system.
+
+
+
+
 #### 1. Reset Database (if needed)
 
 To completely remove existing MySQL data (including tables and inserted rows):
@@ -214,6 +233,8 @@ Provides visual summaries of inventory trends and metrics.
 - Implemented core Java application logic
 - Contributed to service layer and feature planning
 - Assisted with backend functionality
+- Performed QA testing across authentication, role-based access control, and core CRUD workflows
+- Verified system behavior in both development (H2) and containerized (Docker/MySQL) environments
 
 ### Aakarshan Sharma
 - Implemented user interface design
